@@ -2,7 +2,7 @@ FROM python:3.6
 
 RUN apt-get update && apt-get install build-essential -y 
 
-RUN pip install locustio
+RUN pip install locust
 
 WORKDIR "/srv/profile"
 
