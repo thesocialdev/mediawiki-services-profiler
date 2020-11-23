@@ -1,7 +1,7 @@
 import json
 from locust import HttpUser, task, between
 
-# Profiling class for the Wikimedia Page Content Service (mobileapps).
+# Profiling class for the Push Notification service (push-notifications).
 # Endpoint request weighting is taken from the average request rate over 6 hours as reported on
 # https://grafana.wikimedia.org/d/000000183/mobileapps?orgId=1&fullscreen&panelId=1.
 class PushNotifications(HttpUser):
