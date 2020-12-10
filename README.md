@@ -19,6 +19,14 @@ helm install service-name
 ## Get the service URL  
 `minikube service --url <name-of-the-service-pod>`
 
+## Create Docker image
+`make build`
+
+## Run Profiler
+`make run SERVICE_NAME=<service name> SERVICE_PORT=<service port>`
+* note: service name must match service names in service directory
+* another note: service port comes from the service URL
+
 ## Adding secrets to your service
 Inspired by https://cloud.google.com/kubernetes-engine/docs/tutorials/authenticating-to-cloud-platform
 
