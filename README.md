@@ -12,13 +12,28 @@ Take alook at https://wikitech.wikimedia.org/wiki/User:Alexandros_Kosiaris/Bench
 
 ```
 minikube start
-helm repo update
-helm init
-helm install service-name
+minikube addons enable metrics-server
 ```
-## Get the service URL  
-`minikube service --url <name-of-the-service-pod>`
-
+## Helm package
+```
+cd /path/to/charts/folder
+helm package geoshapes
+helm install geoshapes ./geoshapes-0.0.1.tgz
+```
+### Uninstall package
+During development you don't need to keep track of deployments, you just need to uninstall de package and reinstall:
+```
+helm uninstall geoshapes && helm package geoshapes && helm install geoshapes geoshapes-0.0.1.tgz
+```
+## Expose the service ports to the local environment
+```
+kubectl get pods
+kubectl port-forward <pod-name> 6534:6534
+```
+## Open k8s dashboard
+```
+ minikube dashboard
+```
 ## Create Docker image
 `make build`
 
@@ -42,3 +57,6 @@ Solution:
 ```
 minikube stop && minikube delete && minikube start && helm init
 ```
+
+### Debug helm templates 
+Take a look at this stackoverflow question: https://stackoverflow.com/questions/59564379/how-to-debug-helm-chart-errors-like-error-converting-yaml-to-json-yaml-mappin

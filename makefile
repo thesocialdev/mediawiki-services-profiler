@@ -14,7 +14,8 @@ build:
 #			SERVICE_NAME="proton" \
 #			SERVICE_PORT="32285" \
 #
-export MINIKUBE_HOST := $(shell minikube ip)
+# export MINIKUBE_HOST := $(shell minikube ip) on linux hosts
+export MINIKUBE_HOST := host.docker.internal
 run:
 	@echo $$MINIKUBE_HOST
 	docker run \
